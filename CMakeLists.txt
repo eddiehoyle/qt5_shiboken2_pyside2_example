@@ -1,8 +1,18 @@
 cmake_minimum_required(VERSION 3.20)
 project(bindings)
 
+# Setup
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+# Distribution
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+set(CMAKE_INSTALL_RPATH ${CMAKE_CURRENT_BINARY_DIR} /Users/eddiehoyle/Code/cpp/bindings/cmake-build-debug/cpp)
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+# Qt
+set(CMAKE_AUTOMOC ON)
 
 find_package(Qt5 5.12 CONFIG
         HINTS /usr/local/opt/qt@5/lib/cmake
@@ -16,16 +26,7 @@ find_package(Shiboken2 CONFIG
         HINTS /usr/local/opt/pyside@2/lib/cmake/Shiboken2-5.15.2
         REQUIRED)
 
-#message(STATUS "PYSIDE_PYTHONPATH  : ${PYSIDE_PYTHONPATH}")
-#message(STATUS "PYSIDE_TYPESYSTEMS : ${PYSIDE_TYPESYSTEMS}")
-#message(STATUS "PYSIDE_GLUE        : ${PYSIDE_GLUE}")
-#message(STATUS "SHIBOKEN_BUILD_TYPE         : ${SHIBOKEN_BUILD_TYPE}")
-#message(STATUS "SHIBOKEN_PYTHON_INTERPRETER : ${SHIBOKEN_PYTHON_INTERPRETER}")
-#message(STATUS "SHIBOKEN_SHARED_LIBRARY_DIR : ${SHIBOKEN_SHARED_LIBRARY_DIR}")
-#message(STATUS "SHIBOKEN_PYTHON_MODULE_DIR  : ${SHIBOKEN_PYTHON_MODULE_DIR}")
-
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
+# Temp
+#set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/dist)
 
 add_subdirectory(cpp)

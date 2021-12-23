@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+import sys
+
+from PySide2 import QtWidgets
+
+import @BINDINGS_MODULE@
+
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    window = @BINDINGS_MODULE@.Window()
+    window.show()
+    sys.exit(app.exec_())
